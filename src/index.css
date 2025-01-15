@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.animate-title-glow {
+  background: linear-gradient(
+    to right,
+    #4c1d95,
+    #7e22ce,
+    #a855f7,
+    #7e22ce,
+    #4c1d95
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: titleFlow 6s linear infinite alternate;
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+@keyframes titleFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
