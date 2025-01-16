@@ -18,6 +18,13 @@ interface PhantomWindow extends Window {
 
 declare const window: PhantomWindow;
 
+// Add diagonal line animation
+const diagonalStyles = `
+  .diagonal-line {
+    background: linear-gradient(45deg, transparent calc(50% - 1px), rgb(34, 197, 94) calc(50%), transparent calc(50% + 1px));
+  }
+`;
+
 const GameGenerator: React.FC = () => {
   const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false);
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
@@ -109,22 +116,27 @@ const GameGenerator: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-emerald-900 to-gray-900 text-white">
+    <div className="min-h-screen bg-black text-white">
+      <style>{diagonalStyles}</style>
+      
+      {/* Diagonal line decoration */}
+      <div className="fixed inset-0 pointer-events-none diagonal-line opacity-20"></div>
+
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-900 via-emerald-900 to-gray-900 border-b border-gray-800">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-green-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <a href="/" className="text-white hover:text-emerald-400 transition-colors duration-300 font-semibold">
+            <a href="/" className="text-white hover:text-green-400 transition-colors duration-300 font-semibold">
               GAME GEN AI
             </a>
             {isWalletConnected ? (
               <div className="flex items-center space-x-4">
-                <span className="text-gray-300">
+                <span className="text-green-400">
                   {walletAddress?.slice(0, 4)}...{walletAddress?.slice(-4)}
                 </span>
                 <button
                   onClick={disconnectWallet}
-                  className="flex items-center space-x-2 px-4 py-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-all duration-300"
+                  className="flex items-center space-x-2 px-4 py-2 border border-green-500/20 hover:border-green-500 bg-black text-white transition-all duration-300 hover:translate-x-2"
                 >
                   <Wallet className="w-4 h-4" />
                   <span>Disconnect</span>
@@ -133,7 +145,7 @@ const GameGenerator: React.FC = () => {
             ) : (
               <button
                 onClick={connectWallet}
-                className="flex items-center space-x-2 px-4 py-2 rounded-full bg-emerald-600 hover:bg-emerald-700 transition-all duration-300"
+                className="flex items-center space-x-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-black transition-all duration-300 hover:translate-x-2 border-l-4 border-green-600"
                 title="Connect your Phantom wallet to start generating games"
               >
                 <Wallet className="w-4 h-4" />
@@ -145,11 +157,13 @@ const GameGenerator: React.FC = () => {
       </header>
 
       <div className="max-w-4xl mx-auto px-4 pt-24 pb-12">
-        <div className="bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50 shadow-lg h-[calc(100vh-8rem)] flex flex-col">
+        <div className="relative bg-black border border-green-500/20 h-[calc(100vh-8rem)] flex flex-col">
+          <div className="absolute inset-y-0 left-0 w-1 bg-green-500"></div>
+          
           {/* Chat Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {!isWalletConnected && (
-              <div className="text-center text-gray-400 mt-8">
+              <div className="text-center text-green-400 mt-8">
                 Connect your Phantom wallet to start generating games
               </div>
             )}
@@ -158,11 +172,12 @@ const GameGenerator: React.FC = () => {
                 key={index}
                 className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div className={`max-w-[80%] p-3 rounded-lg ${
+                <div className={`relative max-w-[80%] p-4 ${
                   message.type === 'user'
-                    ? 'bg-emerald-600 text-white'
-                    : 'bg-gray-700 text-white'
+                    ? 'bg-black border border-green-500'
+                    : 'bg-black border border-green-500/20'
                 }`}>
+                  <div className="absolute inset-y-0 left-0 w-1 bg-green-500"></div>
                   {message.content}
                 </div>
               </div>
@@ -172,11 +187,11 @@ const GameGenerator: React.FC = () => {
                 {generationSteps.map((step, index) => {
                   if (index <= generationStep) {
                     return (
-                      <div key={index} className="flex items-center space-x-2 text-gray-300">
+                      <div key={index} className="flex items-center space-x-2 text-green-400">
                         {index === generationStep ? (
                           <Loader className="w-4 h-4 animate-spin" />
                         ) : (
-                          <div className="w-4 h-4 rounded-full bg-emerald-500" />
+                          <div className="w-4 h-4 border border-green-500 bg-green-500"></div>
                         )}
                         <span>{step}</span>
                       </div>
@@ -190,21 +205,21 @@ const GameGenerator: React.FC = () => {
           </div>
 
           {/* Input Form */}
-          <form onSubmit={handleSubmit} className="p-4 border-t border-gray-700">
+          <form onSubmit={handleSubmit} className="p-4 border-t border-green-500/20">
             <div className="flex space-x-4">
               <input
                 type="text"
                 value={currentMessage}
                 onChange={(e) => setCurrentMessage(e.target.value)}
                 placeholder={isWalletConnected ? "Describe your game idea..." : "Connect wallet to start generating"}
-                className="flex-1 bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="flex-1 bg-black text-white border border-green-500/20 px-4 py-2 focus:outline-none focus:border-green-500 transition-colors duration-300"
                 disabled={!isWalletConnected || isGenerating}
                 title={!isWalletConnected ? "Please connect your Phantom wallet first" : ""}
               />
               <button
                 type="submit"
                 disabled={!isWalletConnected || isGenerating || !currentMessage.trim()}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                className="bg-green-500 hover:bg-green-600 text-black px-6 py-2 flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:translate-x-2 border-l-4 border-green-600"
                 title={!isWalletConnected ? "Please connect your Phantom wallet first" : ""}
               >
                 <MessageSquare className="w-4 h-4" />
