@@ -157,8 +157,7 @@ const GameGenerator: React.FC = () => {
       </header>
 
       <div className="max-w-4xl mx-auto px-4 pt-24 pb-12">
-        <div className="relative bg-black border border-green-500/20 h-[calc(100vh-8rem)] flex flex-col">
-          <div className="absolute inset-y-0 left-0 w-1 bg-green-500"></div>
+        <div className="bg-black border border-green-500/20 h-[calc(100vh-8rem)] flex flex-col">
           
           {/* Chat Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -172,12 +171,11 @@ const GameGenerator: React.FC = () => {
                 key={index}
                 className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div className={`relative max-w-[80%] p-4 ${
+                <div className={`max-w-[80%] p-4 ${
                   message.type === 'user'
                     ? 'bg-black border border-green-500'
                     : 'bg-black border border-green-500/20'
                 }`}>
-                  <div className="absolute inset-y-0 left-0 w-1 bg-green-500"></div>
                   {message.content}
                 </div>
               </div>
