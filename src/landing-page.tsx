@@ -68,7 +68,7 @@ const LandingPage: React.FC = () => {
   };
 
   const HoverText: React.FC<HoverTextProps> = ({ children, variant = 'body' }) => {
-    const baseStyles = "inline-block transform transition-all duration-300 ease-in-out hover:scale-105 hover:text-emerald-300";
+    const baseStyles = "inline-block transform transition-all duration-300 ease-in-out hover:scale-[1.02] hover:text-emerald-300";
     const variants: { [key: string]: string } = {
       h1: "text-6xl font-bold tracking-tight",
       h2: "text-4xl font-bold",
