@@ -103,7 +103,7 @@ const GameGenerator: React.FC = () => {
     setGenerationStep(0);
 
     for (let i = 0; i < generationSteps.length - 1; i++) {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 8000));
       setGenerationStep(i + 1);
     }
   };
