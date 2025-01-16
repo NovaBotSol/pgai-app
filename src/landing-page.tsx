@@ -113,7 +113,7 @@ const LandingPage: React.FC = () => {
             <div className="flex items-center space-x-6">
               <span className="text-white mr-4">Join GGAI Community</span>
               <a 
-                href="https://x.com/GameGenAI" 
+                href="https://x.com/gamegensai" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-white hover:text-emerald-400 transition-colors duration-300"
@@ -123,7 +123,7 @@ const LandingPage: React.FC = () => {
                 </svg>
               </a>
               <a 
-                href="https://t.me/GGAIPORTAL" 
+                href="https://t.me/ggaiportal" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-white hover:text-emerald-400 transition-colors duration-300"
@@ -144,25 +144,9 @@ const LandingPage: React.FC = () => {
           {/* Hero Section */}
           <div className="text-center mb-24 relative">
             <div className="mb-6">
-              <h1 className="text-6xl font-bold tracking-tight relative">
-                <span className="text-emerald-400 animate-glow-slide relative z-10">
-                  GAME GEN AI
-                </span>
-                <span className="absolute inset-0 animate-glow-slide bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent blur-lg" />
+              <h1 className="text-6xl font-bold tracking-tight animate-title-glow">
+                GAME GEN AI
               </h1>
-              <style jsx global>{`
-                @keyframes glowSlide {
-                  0% {
-                    transform: translateX(-100%);
-                  }
-                  100% {
-                    transform: translateX(100%);
-                  }
-                }
-                .animate-glow-slide {
-                  animation: glowSlide 3s linear infinite;
-                }
-              `}</style>
             </div>
             <div className="mb-12 max-w-2xl mx-auto">
               <HoverText>
