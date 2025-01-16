@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, FormEvent } from 'react';
-import { Wallet, MessageSquare, Loader } from 'lucide-react';
+import { Wallet, MessageSquare, Loader, Check } from 'lucide-react';
 
 interface Message {
   type: 'user' | 'system';
@@ -189,7 +189,7 @@ const GameGenerator: React.FC = () => {
                         {index === generationStep ? (
                           <Loader className="w-4 h-4 animate-spin" />
                         ) : (
-                          <div className="w-4 h-4 border border-green-500 bg-green-500"></div>
+                          <Check className="w-4 h-4 text-green-500" />
                         )}
                         <span>{step}</span>
                       </div>
