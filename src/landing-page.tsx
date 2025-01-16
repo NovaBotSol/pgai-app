@@ -49,7 +49,7 @@ interface TokenCardProps {
   description: string;
 }
 
-const LandingPage: React.FC = () => {
+export default function LandingPage() {
   const [activeTab, setActiveTab] = useState<string>('technology');
 
   const sections: Sections = {
@@ -88,9 +88,8 @@ const LandingPage: React.FC = () => {
   };
 
   const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon }) => (
-    <div className="relative group p-8 rounded-none">
+    <div className="relative group p-8">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-lg group-hover:bg-black transform transition-all duration-500 border border-green-500/20 group-hover:border-green-500 shadow-lg"></div>
-      <div className="absolute inset-y-0 left-0 w-1 bg-green-500/20 group-hover:bg-green-500 transition-all duration-500"></div>
       <div className="relative flex flex-col items-start justify-center h-80 text-left">
         <div className="mb-6 transform transition-all duration-500 group-hover:scale-105">
           {icon}
@@ -106,9 +105,8 @@ const LandingPage: React.FC = () => {
   );
 
   const TokenCard: React.FC<TokenCardProps> = ({ title, description }) => (
-    <div className="relative group p-8 rounded-none">
+    <div className="relative group p-8">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-lg group-hover:bg-black transform transition-all duration-500 border border-green-500/20 group-hover:border-green-500 shadow-lg"></div>
-      <div className="absolute inset-y-0 left-0 w-1 bg-green-500/20 group-hover:bg-green-500 transition-all duration-500"></div>
       <div className="relative flex flex-col items-start justify-center h-80 text-left">
         <div className="mb-4 transform transition-all duration-500 group-hover:translate-x-2">
           <HoverText variant="h4">{title}</HoverText>
@@ -185,7 +183,7 @@ const LandingPage: React.FC = () => {
             </div>
             <button 
               onClick={() => window.location.href = '/generate'} 
-              className="bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-8 transition-all duration-300 hover:translate-x-2 border-l-4 border-green-600"
+              className="bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-8 transition-all duration-300 hover:translate-x-2 border border-green-600"
             >
               Start Creating
             </button>
@@ -225,7 +223,7 @@ const LandingPage: React.FC = () => {
                   onClick={() => setActiveTab(section)}
                   className={`px-8 py-3 transform transition-all duration-300 hover:translate-x-2 ${
                     activeTab === section
-                      ? 'bg-green-500 text-black border-l-4 border-green-600'
+                      ? 'bg-green-500 text-black border border-green-600'
                       : 'bg-black text-white border border-green-500/20 hover:border-green-500'
                   }`}
                 >
@@ -235,8 +233,7 @@ const LandingPage: React.FC = () => {
             </div>
 
             <div className="relative p-8 bg-black">
-              <div className="absolute inset-0 border border-green-500/20"></div>
-              <div className="absolute inset-y-0 left-0 w-1 bg-green-500"></div>
+              <div className="absolute inset-0 border border-green-500/20 transform transition-all duration-500 group-hover:border-green-500"></div>
               <div className="relative">
                 <div className="flex items-start mb-8">
                   {sections[activeTab].icon}
@@ -279,6 +276,4 @@ const LandingPage: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default LandingPage;
+}
