@@ -1,6 +1,25 @@
 import React, { useState } from 'react';
 import { Layout, Text, ChevronRight, Gamepad2, Users, Coins } from 'lucide-react';
 
+// Add the keyframes for the title glow animation
+const glowKeyframes = `
+  @keyframes titleGlow {
+    0%, 100% {
+      color: rgb(52, 211, 153);
+      text-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
+    }
+    50% {
+      color: rgb(16, 185, 129);
+      text-shadow: 0 0 20px rgba(16, 185, 129, 0.7);
+    }
+  }
+  
+  .animate-title-glow {
+    animation: titleGlow 3s ease-in-out infinite;
+  }
+`;
+
+// Rest of the interfaces remain the same
 interface Section {
   title: string;
   content: string;
@@ -30,7 +49,7 @@ interface TokenCardProps {
 const LandingPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('technology');
 
-  const sections: Sections = {
+    const sections: Sections = {
     technology: {
       title: 'Technology',
       content: `GAME GEN AI is a groundbreaking platform that harnesses cutting-edge AI and blockchain technology to transform simple text prompts into fully playable video games. Our advanced AI models handle everything from game mechanics to assets and storylines, while blockchain integration ensures secure transactions and ownership.`,
@@ -95,6 +114,8 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-emerald-900 to-gray-900 text-white">
+      <style>{glowKeyframes}</style>
+      
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-900 via-emerald-900 to-gray-900 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,7 +134,7 @@ const LandingPage: React.FC = () => {
             <div className="flex items-center space-x-6">
               <span className="text-white mr-4">Join GGAI Community</span>
               <a 
-                href="https://x.com/gamegensai" 
+                href="https://x.com/GameGenAI" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-white hover:text-emerald-400 transition-colors duration-300"
@@ -123,7 +144,7 @@ const LandingPage: React.FC = () => {
                 </svg>
               </a>
               <a 
-                href="https://t.me/ggaiportal" 
+                href="https://t.me/GGAIPORTAL" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-white hover:text-emerald-400 transition-colors duration-300"
@@ -144,7 +165,7 @@ const LandingPage: React.FC = () => {
           {/* Hero Section */}
           <div className="text-center mb-24 relative">
             <div className="mb-6">
-              <h1 className="text-6xl font-bold tracking-tight animate-title-glow">
+              <h1 className="text-6xl font-bold tracking-tight animate-title-glow text-emerald-400">
                 GAME GEN AI
               </h1>
             </div>
@@ -161,7 +182,8 @@ const LandingPage: React.FC = () => {
             </button>
           </div>
 
-          {/* Feature Cards */}
+          {/* Rest of your component remains exactly the same... */}
+          {/* Feature Cards Section */}
           <div className="flex gap-8 mb-24 px-8 pb-4">
             <div className="w-1/3">
               <FeatureCard
