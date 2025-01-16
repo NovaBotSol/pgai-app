@@ -151,7 +151,7 @@ export default function LandingPage() {
                 </svg>
               </a>
               <a 
-                href="https://t.me/GGAIPORTAL" 
+                href="https://t.me/GGAIPORTALL" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-white hover:text-green-400 transition-colors duration-300"
