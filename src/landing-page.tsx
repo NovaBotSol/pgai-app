@@ -102,12 +102,15 @@ const LandingPage: React.FC = () => {
   );
 
   const TokenCard: React.FC<TokenCardProps> = ({ title, description }) => (
-    <div className="group bg-gray-800/50 p-8 rounded-2xl backdrop-blur-lg hover:bg-emerald-900/60 transform transition-all duration-300 hover:scale-105 border border-gray-700/50 hover:border-emerald-500/50 shadow-lg hover:shadow-emerald-500/20 text-center">
-      <div className="mb-4">
-        <HoverText variant="h4">{title}</HoverText>
-      </div>
-      <div>
-        <HoverText>{description}</HoverText>
+    <div className="relative group p-8 rounded-2xl">
+      <div className="absolute inset-0 bg-gray-800/50 rounded-2xl backdrop-blur-lg group-hover:bg-emerald-900/60 transform transition-all duration-500 border border-gray-700/50 group-hover:border-emerald-500/50 shadow-lg group-hover:shadow-emerald-500/20"></div>
+      <div className="relative flex flex-col items-center justify-center h-80 text-center">
+        <div className="mb-4 transform transition-all duration-500 group-hover:scale-105">
+          <HoverText variant="h4">{title}</HoverText>
+        </div>
+        <div className="transform transition-all duration-500 group-hover:scale-105">
+          <HoverText>{description}</HoverText>
+        </div>
       </div>
     </div>
   );
@@ -226,15 +229,18 @@ const LandingPage: React.FC = () => {
               ))}
             </div>
 
-            <div className="bg-gray-800/50 p-10 rounded-2xl backdrop-blur-lg hover:bg-emerald-900/60 transform transition-all duration-300 hover:scale-105 border border-gray-700/50 hover:border-emerald-500/50 shadow-lg hover:shadow-emerald-500/20">
-              <div className="flex items-center mb-8">
-                {sections[activeTab].icon}
-                <div className="ml-6">
-                  <HoverText variant="h2">{sections[activeTab].title}</HoverText>
+            <div className="relative group p-10 rounded-2xl">
+              <div className="absolute inset-0 bg-gray-800/50 rounded-2xl backdrop-blur-lg group-hover:bg-emerald-900/60 transform transition-all duration-500 border border-gray-700/50 group-hover:border-emerald-500/50 shadow-lg group-hover:shadow-emerald-500/20"></div>
+              <div className="relative flex flex-col h-full">
+                <div className="flex items-center mb-8 transform transition-all duration-500 group-hover:scale-105">
+                  {sections[activeTab].icon}
+                  <div className="ml-6">
+                    <HoverText variant="h2">{sections[activeTab].title}</HoverText>
+                  </div>
                 </div>
-              </div>
-              <div className="text-lg leading-relaxed">
-                <HoverText>{sections[activeTab].content}</HoverText>
+                <div className="text-lg leading-relaxed transform transition-all duration-500 group-hover:scale-105">
+                  <HoverText>{sections[activeTab].content}</HoverText>
+                </div>
               </div>
             </div>
           </div>
